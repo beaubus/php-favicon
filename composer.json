@@ -1,0 +1,27 @@
+{
+    "name": "beaubus/php-favicon",
+    "description": "Choose a favicon for your PHP project from a set of over 110 free BEAUBUS Favicons.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "favicon",
+        "php"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Beaubus\\PhpFavicon\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daily Web Dev",
+            "homepage": "https://www.beaubus.com",
+            "role": "Developer"
+
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "ext-zip": "*"
+    }
+}
