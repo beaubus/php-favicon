@@ -15,30 +15,47 @@ class PhpFavicon
         if (!empty($this->public_path) && !str_ends_with($this->public_path, '/')) $this->public_path .= '/';
     }
 
-    public function init($favicon_name = 'pocket watch', bool $check_for_name_updates = true)
+    /**
+     * Check if favicon installed and install/update if needed
+     * @throws \Exception
+     */
+    public function init($favicon_name = 'pocket watch', bool $check_for_name_updates = true): void
     {
         if (!$check_for_name_updates) return;   // favicon is installed
         if (!$this->isFaviconChanged($favicon_name)) return; // favicon is not changed
 
         $favicon = $this->getFavicon($favicon_name);
-        if (!isset($favicon['name'])) return;
+        if (!isset($favicon['name'])) throw new \Exception("Can't find favicon, please check the name '$favicon_name'");
 
         $this->extractFavicon($favicon);
     }
 
     /**
+     * Make tags acessible via magic method. Example: $favicon->tags;
+     */
+    public function __get($name)
+    {
+        if ($name !== 'tags') return;
+        return $this->tags();
+    }
+
+    /**
      * Render favicon tags to the string
      */
-    public function tags(): string
+    public function tags($colors = [
+        'mask-icon' => '#5bbad5',
+        'msapplication-TileColor' => '#2d89ef',
+        'theme-color' => '#ffffff',
+    ]): string
     {
         return <<<TAGS
             <link rel="apple-touch-icon" sizes="180x180" href="/beaubus-favicon/apple-touch-icon.png">
             <link rel="icon" type="image/png" sizes="32x32" href="/beaubus-favicon/favicon-32x32.png">
             <link rel="icon" type="image/png" sizes="16x16" href="/beaubus-favicon/favicon-16x16.png">
             <link rel="manifest" href="/beaubus-favicon/site.webmanifest">
-            <link rel="mask-icon" href="/beaubus-favicon/safari-pinned-tab.svg" color="#5bbad5">
-            <meta name="msapplication-TileColor" content="#2d89ef">
-            <meta name="theme-color" content="#ffffff">
+            <link rel="mask-icon" href="/beaubus-favicon/safari-pinned-tab.svg" color="{$colors['mask-icon']}">
+            <meta name="msapplication-TileColor" content="{$colors['msapplication-TileColor']}">
+            <meta name="theme-color" content="{$colors['theme-color']}">
         TAGS;
     }
 
