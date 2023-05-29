@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Beaubus\\PhpFavicon\\' => array($baseDir . '/src'),
+    'Beaubus\\' => array($baseDir . '/src'),
 );

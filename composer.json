@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Beaubus\\PhpFavicon\\": "src/"
+            "Beaubus\\": "src/"
         }
     },
     "authors": [

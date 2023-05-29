@@ -9,12 +9,12 @@ class ComposerStaticInit032f7650bf40e8daa5c461e97ac9908c
     public static $prefixLengthsPsr4 = array (
         'B' => 
         array (
-            'Beaubus\\PhpFavicon\\' => 19,
+            'Beaubus\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Beaubus\\PhpFavicon\\' => 
+        'Beaubus\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
