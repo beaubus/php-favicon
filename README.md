@@ -20,4 +20,15 @@ $favicon->init(
  ); 
 
 echo $favicon->tags();
+
+```
+
+## Options
+You can override default colors when generating tags
+```php
+$favicon->tags([
+    'mask-icon' => '#5bbad5',
+    'msapplication-TileColor' => '#2d89ef',
+    'theme-color' => '#ffffff',
+]);
 ```
